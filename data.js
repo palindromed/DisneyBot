@@ -1,62 +1,61 @@
 module.exports = {
-  "Parks": {
     "MagicKingdom": {
-      "Schedule": {
-        "Open": "9am",
-        "Close": "10pm"
+      "name": "Magic Kingdom",
+      "schedule": {
+        "open": "9am",
+        "close": "10pm"
       },
-      "Rides": {
+      "rides": {
         "SplashMountain": {
-          "Name": "Splash Mountain",
-          "Description": "Big drop ends in a splash!",
-          "Schedule": {
-            "Open": "9am",
-            "Close": "3pm"
+          "name": "Splash Mountain",
+          "description": "Big drop ends in a splash!",
+          "schedule": {
+            "open": "9am",
+            "close": "3pm"
           }
         },
         "BuzzLightYear": {
-          "Name": "Buzz Lightyear's Space Ranger Spin",
-          "Description": "Use your laser to defeat Zurg!",
-          "IsOpen": "true",
-          "Schedule": {
-            "Open": "1pm",
-            "Close": "10pm"
+          "name": "Buzz Lightyear's Space Ranger Spin",
+          "description": "Use your laser to defeat Zurg!",
+          "schedule": {
+            "open": "1pm",
+            "close": "10pm"
           }
         }
-      },
+      }
+  },
       "HollyWoodStudio": {
-        "Schedule": {
-          "Open": "7am",
-          "Close": "8pm"
+        "schedule": {
+          "open": "7am",
+          "close": "8pm"
         },
-        "Rides": {
+        "rides": {
 
           "TowerOfTerror": {
-            "Name": "The Twilight Zone Tower of Terror",
-            "Description": "Big drops and lots of fun for everyone of a certain height.",
-            "Schedule": {
-              "Open": "1pm",
-              "Close": "8pm"
+            "name": "The Twilight Zone Tower of Terror",
+            "description": "Big drops and lots of fun for everyone of a certain height.",
+            "schedule": {
+              "open": "1pm",
+              "close": "8pm"
             }
           },
           "ToyStory": {
-            "Name": "Toy Story Mania",
-            "Description": "Compete against your neighbor in this 3d extravaganza!",
-            "Schedule": {
-              "Open": "7am",
-              "Close": "6pm"
+            "name": "Toy Story Mania",
+            "description": "Compete against your neighbor in this 3d extravaganza!",
+            "schedule": {
+              "open": "7am",
+              "close": "6pm"
             } 
           }
         }
       },
       "EPCOT": {
-        "Rides": {},
-        "Schedule": {}
+        "rides": {},
+        "schedule": {}
       },
       "AnimalKingdom": {
-        "Rides": {},
-        "Schedule": {}
+        "rides": {},
+        "schedule": {}
       }
-    }
-  }
-}
+    
+  };
