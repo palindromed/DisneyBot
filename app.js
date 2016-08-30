@@ -21,31 +21,78 @@ server.post('/api/messages', connector.listen());
 
 // Start logic for bot
 bot.dialog('/', dialog);
-
+dialog.onDefault(builder.DialogAction.send(prompts.helpMessage));
 
 dialog.matches('GetParks', [getPark, choosePark('parks', prompts.parkUnknown)])
 
 
 
 function getPark(session, args, next) {
+	// console.log(args);
+	var park;
+	var entity = builder.EntityRecognizer.findEntity(args.entities, 'Parks')
+	if (entity) {
+		park = builder.EntityRecognizer.findBestMatch(DisneyWorld, entity.entity);
+	} else if (session.userData.park) {
+		park = session.userData.park;
 
-	builder.Prompts.choice(session, prompts.parkMissing, DisneyWorld);
+	}
+
+	if (!session.userData.park) {
+	// 	var text = entity ? session.gettext(prompts.parkUnknown, { park: entity.entity }) : prompts.parkMissing;
+		builder.Prompts.choice(session, prompts.parkMissing, DisneyWorld);
+	} else {
+		next({ response: park})
+	}
+	 	
+
 
 }
 
 function choosePark(field, prompt) {
 	return function(session, results) {
 		if (results.response) {
-
 			var park = session.userData.park = results.response.entity;
 
 			// so the park has been set, now what does the user need?
-			session.send(session.userData.park);
+			session.send(session);
 
 		} else {
 
-			session.send('That did not work');
-			
+			session.send(prompts.cancel);
+
 		}
+	}
+}
+// make sure we have park
+// make sure we have ride
+// return details
+dialog.matches('Description', [getPark, getDescription('park', prompts.parkDescription)]);
+
+function getDescription(field, prompt) {
+	return function parkDescription(session, results) {
+	var park = session.userData.park = results.response.entity;
+	console.log(park);
+	var desc = DisneyWorld[park].description;
+	// session.CreateMessage(prompt, )
+
+	session.send(DisneyWorld[park].description);
+	}
+}
+
+
+dialog.matches('Hours', [getPark, getHours('hours', prompts.parkHours)])
+
+function getHours(field, prompt) {
+	return function parkHours(session, results) {
+		var park = session.userData.park = results.response.entity;
+		if (park) {
+			var answer = { park: park, open: DisneyWorld[park].schedule.open, close: DisneyWorld[park].schedule.close };
+			session.send(prompt, answer);
+		}
+		else {
+			session.send(prompts.helpMessage);
+		}
+
 	}
 }

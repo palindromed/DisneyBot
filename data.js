@@ -1,6 +1,7 @@
 module.exports = {
     "MagicKingdom": {
       "name": "Magic Kingdom",
+      "description": "A magical kingom!",
       "schedule": {
         "open": "9am",
         "close": "10pm"
@@ -24,7 +25,9 @@ module.exports = {
         }
       }
   },
-      "HollyWoodStudio": {
+      "HollywoodStudio": {
+        "name": "Hollywood Studio",
+        "description": "Hollywood themed adventures.",
         "schedule": {
           "open": "7am",
           "close": "8pm"
@@ -50,10 +53,14 @@ module.exports = {
         }
       },
       "EPCOT": {
+        "name": "EPCOT",
+        "description": "EPCOT center",
         "rides": {},
         "schedule": {}
       },
       "AnimalKingdom": {
+        "name": "Animal Kingdom",
+        "description": "Walk with the animals.",
         "rides": {},
         "schedule": {}
       }
