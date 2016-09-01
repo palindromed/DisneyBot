@@ -1,4 +1,4 @@
-var DisneyWorld = require('./data.js');
+let DisneyWorld = require('./data.js');
 var restify = require('restify');
 var builder = require('botbuilder');
 var model = process.env.model || 'https://api.projectoxford.ai/luis/v1/application?id=25726d27-3aa1-4845-b48e-10abd0e38065&subscription-key=185095b5211448509828b620c39bb3f8';
