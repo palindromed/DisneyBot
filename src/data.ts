@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     "MagicKingdom": {
       "name": "Magic Kingdom",
       "description": "A magical kingom!",
