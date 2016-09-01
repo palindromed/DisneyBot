@@ -1,9 +1,10 @@
-var DisneyWorld = require('./data.js');
-var restify = require('restify');
-var builder = require('botbuilder');
+import DisneyWorld from './data';
+import * as restify from 'restify';
+import * as builder from 'botbuilder';
+import prompts from './prompts';
+
 var model = process.env.model || 'https://api.projectoxford.ai/luis/v1/application?id=25726d27-3aa1-4845-b48e-10abd0e38065&subscription-key=185095b5211448509828b620c39bb3f8';
 var recognizer = new builder.LuisRecognizer(model);
-var prompts = require('./prompts.js')
 var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 
 // Start Server for Bot
@@ -13,7 +14,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function() {
 });
 
 var connector = new builder.ChatConnector({
-    appid: process.env.MICROSOFT_APP_ID,
+    appId: process.env.MICROSOFT_APP_ID,
     appPassword: process.env.MICROSOFT_APP_PASSWORD
 });
 var bot = new builder.UniversalBot(connector);

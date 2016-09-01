@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "outDir": "./dist",
+        "noImplicitAny": false
+    },
+    "files": [
+        "typings/index.d.ts",
+        "src/data.ts",
+        "src/prompts.ts",
+        "src/app.ts"
+    ]
+}

@@ -1,5 +1,5 @@
-module.exports = {
-    "magickingdom": {
+export default {
+    "MagicKingdom": {
       "name": "Magic Kingdom",
       "description": "A magical kingom!",
       "schedule": {
