@@ -1,5 +1,5 @@
 module.exports = {
-    "MagicKingdom": {
+    "magickingdom": {
       "name": "Magic Kingdom",
       "description": "A magical kingom!",
       "schedule": {

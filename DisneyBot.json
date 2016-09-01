@@ -1,0 +1,1013 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "DisneyBot",
+  "desc": "Find out more about the parks of Disney World with this bot.",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "ListRides"
+    },
+    {
+      "name": "GetParks"
+    },
+    {
+      "name": "OpeningTime"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "Description"
+    },
+    {
+      "name": "Location"
+    },
+    {
+      "name": "Hours"
+    },
+    {
+      "name": "ClosingTime"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Parks"
+    },
+    {
+      "name": "Rides"
+    }
+  ],
+  "composites": [
+    {
+      "name": "Disneyworld",
+      "children": [
+        "Parks",
+        "Rides"
+      ]
+    },
+    {
+      "name": "Hours",
+      "children": [
+        "datetime"
+      ]
+    }
+  ],
+  "bing_entities": [
+    "datetime"
+  ],
+  "actions": [
+    {
+      "actionName": "Description",
+      "intentName": "Description",
+      "actionParameters": [
+        {
+          "parameterName": "Describe Park",
+          "entityName": "Parks",
+          "required": false
+        },
+        {
+          "parameterName": "Describe Ride",
+          "entityName": "Rides",
+          "required": false
+        }
+      ]
+    },
+    {
+      "actionName": "Location",
+      "intentName": "Location",
+      "actionParameters": []
+    },
+    {
+      "actionName": "Hours",
+      "intentName": "Hours",
+      "actionParameters": [
+        {
+          "parameterName": "park hours",
+          "entityName": "Parks",
+          "required": false
+        },
+        {
+          "parameterName": "ride hours",
+          "entityName": "Rides",
+          "required": false
+        }
+      ]
+    },
+    {
+      "actionName": "ListRides",
+      "intentName": "ListRides",
+      "actionParameters": []
+    },
+    {
+      "actionName": "GetParks",
+      "intentName": "GetParks",
+      "actionParameters": [
+        {
+          "parameterName": "parks",
+          "entityName": "Parks",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "what about magic kingdom",
+      "intent": "Description",
+      "entities": []
+    },
+    {
+      "text": "what time does magic mountain open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "when will it open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Disneyworld",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "which park has the tower of terror?",
+      "intent": "Location",
+      "entities": []
+    },
+    {
+      "text": "when is magic kingdom open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when is hollywood open?",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "where is splash mountain?",
+      "intent": "Location",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "which parks disney",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "d",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what is epcot?",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "tell me about magic kingdom",
+      "intent": "Description",
+      "entities": []
+    },
+    {
+      "text": "what parks disney",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "describe magic kingdom",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        },
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "when does splash mountain close?",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what is magic kindom like",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what",
+      "intent": "Description",
+      "entities": []
+    },
+    {
+      "text": "what hours magic",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "what parks",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what is magic kingdom like?",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when is hollywood studio open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what time does magic kingdom close?",
+      "intent": "ClosingTime",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what hours hollywood",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "disneyworld[park].schedule.open",
+      "intent": "Hours",
+      "entities": []
+    },
+    {
+      "text": "which parks are in disneyworld?",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "hollywoodstudio",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 0,
+          "endPos": 0
+        }
+      ]
+    },
+    {
+      "text": "hi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "more information tower of terror",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Rides",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Rides",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "help",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what rides are in magic kingdom?",
+      "intent": "ListRides",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Parks",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Rides",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "tell me about buzz lightyear",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Rides",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what hours magic kingdom open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what parks are in disney world?",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "magickingdom",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 0,
+          "endPos": 0
+        }
+      ]
+    },
+    {
+      "text": "what is hollywood like/",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "what rides are in hollywood studio",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Rides",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "what is hollywood like",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "which parks disny",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what parks are in disneyworld",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "j",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what parks disney orland",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what hours is hollywood open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "parks of disneyworld",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what about splash mountain",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Rides",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what are hours for hollywood studio",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "when does magic mountain close",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "sdj",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what time does the park close?",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "which parks are in disneyworld",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "what parks disney orlando",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what time is magic mountain open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "how many parks in disney world",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "what time does hollywood open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what hours hollywood open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "which parks are still open",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        },
+        {
+          "entity": "Hours",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what time is hollywood open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "describe animal kingdom",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        },
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "hours hollywood",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "what is magic kingdom",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when does magic mountain open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what rides are open now?",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "which parks does disneyworld have",
+      "intent": "GetParks",
+      "entities": []
+    },
+    {
+      "text": "when does it open?",
+      "intent": "Hours",
+      "entities": []
+    },
+    {
+      "text": "what is hollywood like?",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "what is magic kingdom like",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what is splash mountain like?",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "fds",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what time does it open?",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Disneyworld",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what are hours for magic kingdom",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Parks",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what parks in walt disney world",
+      "intent": "GetParks",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "when is hollywood open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "what are hollywood hours",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "i want a banana",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "when will it close",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Disneyworld",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "what time does hollywood studio open",
+      "intent": "Hours",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "what is splash mountain",
+      "intent": "Description",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when does splash mountain open?",
+      "intent": "OpeningTime",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when does tower of terror close?",
+      "intent": "ClosingTime",
+      "entities": []
+    },
+    {
+      "text": "what time is magic kingdom open until?",
+      "intent": "ClosingTime",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Parks",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "when does buzz lightyear close?",
+      "intent": "ClosingTime",
+      "entities": [
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "when does epcot open?",
+      "intent": "OpeningTime",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "when does tower of terror start?",
+      "intent": "OpeningTime",
+      "entities": [
+        {
+          "entity": "Disneyworld",
+          "startPos": 2,
+          "endPos": 4
+        },
+        {
+          "entity": "Rides",
+          "startPos": 2,
+          "endPos": 3
+        },
+        {
+          "entity": "Rides",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "when does hollywood open?",
+      "intent": "OpeningTime",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "when does animal kingdom open?",
+      "intent": "OpeningTime",
+      "entities": [
+        {
+          "entity": "Parks",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Parks",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    }
+  ]
+}
