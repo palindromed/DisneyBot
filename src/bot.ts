@@ -139,9 +139,12 @@ intents.matches('ListRides', [
 				// send an error msg or default
 				session.send(prompts.queryUnknown)
 			} else {
+			let rideObj = DisneyParks[match.entity].rides
+
+			let myRides = Object.keys(rideObj).map(function(k) {return rideObj[k].name });
 			let answer = {
 				park: DisneyParks[match.entity].name,
-				rides: DisneyParks[match.entity].parks
+				rides: myRides
 			}
 			session.send(prompts.listRides, answer);
 
