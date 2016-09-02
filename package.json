@@ -2,10 +2,10 @@
   "name": "disneybot",
   "version": "0.0.1",
   "description": "A bot to learn about Disney World parks ",
-  "main": "app.js",
+  "main": "newApp.js",
   "scripts": {
     "typings": "typings install",
-    "start": "node dist/app.js",
+    "start": "node dist\newApp.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hannah Krager",
