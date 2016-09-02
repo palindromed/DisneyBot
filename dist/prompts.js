@@ -8,11 +8,11 @@ exports.default = {
         "* 'when does Splash Mountain close?'\n" +
         "\nOnce you ask a question about a park you can ask followup questions about the same park.",
     getPark: "Choose a park from the list",
-    parkUnknown: "I don't know '%(park)'. Pick a park from the list or say 'nevermind'.",
+    queryUnknown: "I don't know that one. Try another query.",
     parkMissing: "I can answer that first tell me what park or ride you're interested in:",
     cancel: "Sure... no problem.",
     parkClose: "%(park)s closes at %(time)s.",
     parkOpen: "%(park)s opens at %(time)s.",
-    parkDescription: "Here is a little information about %(park)s:\n ",
+    parkDescription: "Here is a little information about %(park)s:\n%(description)s",
     parkHours: "%(park)s is open from %(open)s until %(close)s",
 };

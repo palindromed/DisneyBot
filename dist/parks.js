@@ -57,12 +57,18 @@ exports.default = {
         "name": "EPCOT",
         "description": "EPCOT center",
         "rides": {},
-        "schedule": {}
+        "schedule": {
+            "open": "8am",
+            "close": "8pm"
+        }
     },
     "AnimalKingdom": {
         "name": "Animal Kingdom",
         "description": "Walk with the animals.",
         "rides": {},
-        "schedule": {}
+        "schedule": {
+            "open": "11:30am",
+            "close": "10pm"
+        }
     }
 };

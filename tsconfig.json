@@ -10,7 +10,6 @@
         "src/parks.ts",
         "src/rides.ts",
         "src/prompts.ts",
-        // "src/app.ts",
-        "src/newApp.ts"
+        "src/bot.ts"
     ]
 }
