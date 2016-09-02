@@ -54,7 +54,7 @@ intents.matches('Hours', [
 			let answer = {
 				park: DisneyParks[match.entity].name,
 				open: DisneyParks[match.entity].schedule.open,
-				close: DisneyParks[match.entity].schedule.open
+				close: DisneyParks[match.entity].schedule.close
 			}
 			session.send(prompts.parkHours, answer);
 
@@ -111,4 +111,45 @@ intents.matches('Description', [
 			session.send(prompts.queryUnknown);
 		}
 	}
+])
+
+intents.matches('ListRides', [
+	(session, args, next) => {
+		let match: any;
+		let ride: builder.IEntity =  builder.EntityRecognizer.findEntity(args.entities, 'Rides');
+		let parks: builder.IEntity =  builder.EntityRecognizer.findEntity(args.entities, 'Parks');
+			if (ride) {
+				match = builder.EntityRecognizer.findBestMatch(DisneyRides, ride.entity);
+
+				if (!match) {
+					// send an error msg or default
+					session.send( prompts.queryUnknown);
+				} else {
+				let answer = {
+					park: DisneyRides[match.entity].park,
+					ride: DisneyRides[match.entity].name
+				}
+
+				session.send(prompts.getPark, answer);
+				}
+		} else if (parks) {
+			match = builder.EntityRecognizer.findBestMatch(DisneyParks, parks.entity);
+
+			if (!match) {
+				// send an error msg or default
+				session.send(prompts.queryUnknown)
+			} else {
+			let answer = {
+				park: DisneyParks[match.entity].name,
+				rides: DisneyParks[match.entity].parks
+			}
+			session.send(prompts.listRides, answer);
+
+		
+			}
+		} else {
+			session.send(prompts.queryUnknown);
+		}
+	}
+
 ])
