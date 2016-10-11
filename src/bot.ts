@@ -30,11 +30,13 @@ intents.matches('Hours', [
 		let ride: builder.IEntity =  builder.EntityRecognizer.findEntity(args.entities, 'Rides');
         if (ride) {
 			match = builder.EntityRecognizer.findBestMatch(DisneyRides, ride.entity);
+			// session.privateConversationData.topic = ride;
 
 			if (!match) {
 				// send an error msg or default
 				session.send( prompts.queryUnknown);
 			} else {
+			session.privateConversationData.topic = args.entities;
 			let answer = {
 				park: DisneyRides[match.entity].name,
 				open: DisneyRides[match.entity].schedule.open,
@@ -51,6 +53,7 @@ intents.matches('Hours', [
 				// send an error msg or default
 				session.send(prompts.queryUnknown)
 			} else {
+			session.privateConversationData.topic = args.entities;
 			let answer = {
 				park: DisneyParks[match.entity].name,
 				open: DisneyParks[match.entity].schedule.open,
@@ -61,7 +64,46 @@ intents.matches('Hours', [
      
 			}
 		} else {
-			session.send(prompts.queryUnknown);
+			// Get topic
+			let parkTopic: builder.IEntity = builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Parks');
+			let rideTopic: builder.IEntity =  builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Rides');
+			console.log(parkTopic, rideTopic)
+			if (rideTopic) {
+				match = builder.EntityRecognizer.findBestMatch(DisneyRides, rideTopic.entity);
+				// session.privateConversationData.topic = ride;
+
+			if (!match) {
+				// send an error msg or default
+				session.send( prompts.queryUnknown);
+			} else {
+
+			let answer = {
+				park: DisneyRides[match.entity].name,
+				open: DisneyRides[match.entity].schedule.open,
+				close: DisneyRides[match.entity].schedule.open
+			}
+			session.send(prompts.parkHours, answer);
+
+     
+			}
+        } else if (parkTopic) {
+			match = builder.EntityRecognizer.findBestMatch(DisneyParks, parkTopic.entity);
+
+			if (!match) {
+				// send an error msg or default
+				session.send(prompts.queryUnknown)
+			} else {
+			let answer = {
+				park: DisneyParks[match.entity].name,
+				open: DisneyParks[match.entity].schedule.open,
+				close: DisneyParks[match.entity].schedule.close
+			}
+			session.send(prompts.parkHours, answer);
+			// get last thing talked about
+			// tell if it's a ride or park?
+			// session.send(prompts.queryUnknown);
+			}
+		}
 		}
     },
 
@@ -85,6 +127,7 @@ intents.matches('Description', [
 				// send an error msg or default
 				session.send( prompts.queryUnknown);
 			} else {
+			session.privateConversationData.topic = args.entities;
 			let answer = {
 				park: DisneyRides[match.entity].name,
 				description: DisneyRides[match.entity].description
@@ -99,6 +142,7 @@ intents.matches('Description', [
 				// send an error msg or default
 				session.send(prompts.queryUnknown)
 			} else {
+			session.privateConversationData.topic = args.entities;
 			let answer = {
 				park: DisneyParks[match.entity].name,
 				description: DisneyParks[match.entity].description
@@ -108,7 +152,39 @@ intents.matches('Description', [
 		
 			}
 		} else {
-			session.send(prompts.queryUnknown);
+		let rideTopic: builder.IEntity =  builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Rides');
+		let parkTopic: builder.IEntity =  builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Parks');
+		if (rideTopic) {
+		match = builder.EntityRecognizer.findBestMatch(DisneyRides, rideTopic.entity);
+
+			if (!match) {
+				// send an error msg or default
+				session.send( prompts.queryUnknown);
+			} else {
+			let answer = {
+				park: DisneyRides[match.entity].name,
+				description: DisneyRides[match.entity].description
+			}
+
+			session.send(prompts.parkDescription, answer);
+			}
+		} else if (parkTopic) {
+		match = builder.EntityRecognizer.findBestMatch(DisneyParks, parkTopic.entity);
+
+			if (!match) {
+				// send an error msg or default
+				session.send(prompts.queryUnknown)
+			} else {
+			let answer = {
+				park: DisneyParks[match.entity].name,
+				description: DisneyParks[match.entity].description
+			}
+			session.send(prompts.parkDescription, answer);
+
+		
+			}
+		}
+			// session.send(prompts.queryUnknown);
 		}
 	}
 ])

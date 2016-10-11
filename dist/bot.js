@@ -24,11 +24,13 @@ intents.matches('Hours', [
         let ride = builder.EntityRecognizer.findEntity(args.entities, 'Rides');
         if (ride) {
             match = builder.EntityRecognizer.findBestMatch(rides_1.default, ride.entity);
+            // session.privateConversationData.topic = ride;
             if (!match) {
                 // send an error msg or default
                 session.send(prompts_1.default.queryUnknown);
             }
             else {
+                session.privateConversationData.topic = args.entities;
                 let answer = {
                     park: rides_1.default[match.entity].name,
                     open: rides_1.default[match.entity].schedule.open,
@@ -44,6 +46,7 @@ intents.matches('Hours', [
                 session.send(prompts_1.default.queryUnknown);
             }
             else {
+                session.privateConversationData.topic = args.entities;
                 let answer = {
                     park: parks_1.default[match.entity].name,
                     open: parks_1.default[match.entity].schedule.open,
@@ -53,7 +56,41 @@ intents.matches('Hours', [
             }
         }
         else {
-            session.send(prompts_1.default.queryUnknown);
+            // Get topic
+            let parkTopic = builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Parks');
+            let rideTopic = builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Rides');
+            console.log(parkTopic, rideTopic);
+            if (rideTopic) {
+                match = builder.EntityRecognizer.findBestMatch(rides_1.default, rideTopic.entity);
+                // session.privateConversationData.topic = ride;
+                if (!match) {
+                    // send an error msg or default
+                    session.send(prompts_1.default.queryUnknown);
+                }
+                else {
+                    let answer = {
+                        park: rides_1.default[match.entity].name,
+                        open: rides_1.default[match.entity].schedule.open,
+                        close: rides_1.default[match.entity].schedule.open
+                    };
+                    session.send(prompts_1.default.parkHours, answer);
+                }
+            }
+            else if (parkTopic) {
+                match = builder.EntityRecognizer.findBestMatch(parks_1.default, parkTopic.entity);
+                if (!match) {
+                    // send an error msg or default
+                    session.send(prompts_1.default.queryUnknown);
+                }
+                else {
+                    let answer = {
+                        park: parks_1.default[match.entity].name,
+                        open: parks_1.default[match.entity].schedule.open,
+                        close: parks_1.default[match.entity].schedule.close
+                    };
+                    session.send(prompts_1.default.parkHours, answer);
+                }
+            }
         }
     },
 ]);
@@ -73,6 +110,7 @@ intents.matches('Description', [
                 session.send(prompts_1.default.queryUnknown);
             }
             else {
+                session.privateConversationData.topic = args.entities;
                 let answer = {
                     park: rides_1.default[match.entity].name,
                     description: rides_1.default[match.entity].description
@@ -87,6 +125,7 @@ intents.matches('Description', [
                 session.send(prompts_1.default.queryUnknown);
             }
             else {
+                session.privateConversationData.topic = args.entities;
                 let answer = {
                     park: parks_1.default[match.entity].name,
                     description: parks_1.default[match.entity].description
@@ -95,7 +134,36 @@ intents.matches('Description', [
             }
         }
         else {
-            session.send(prompts_1.default.queryUnknown);
+            let rideTopic = builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Rides');
+            let parkTopic = builder.EntityRecognizer.findEntity(session.privateConversationData.topic, 'Parks');
+            if (rideTopic) {
+                match = builder.EntityRecognizer.findBestMatch(rides_1.default, rideTopic.entity);
+                if (!match) {
+                    // send an error msg or default
+                    session.send(prompts_1.default.queryUnknown);
+                }
+                else {
+                    let answer = {
+                        park: rides_1.default[match.entity].name,
+                        description: rides_1.default[match.entity].description
+                    };
+                    session.send(prompts_1.default.parkDescription, answer);
+                }
+            }
+            else if (parkTopic) {
+                match = builder.EntityRecognizer.findBestMatch(parks_1.default, parkTopic.entity);
+                if (!match) {
+                    // send an error msg or default
+                    session.send(prompts_1.default.queryUnknown);
+                }
+                else {
+                    let answer = {
+                        park: parks_1.default[match.entity].name,
+                        description: parks_1.default[match.entity].description
+                    };
+                    session.send(prompts_1.default.parkDescription, answer);
+                }
+            }
         }
     }
 ]);
@@ -125,9 +193,11 @@ intents.matches('ListRides', [
                 session.send(prompts_1.default.queryUnknown);
             }
             else {
+                let rideObj = parks_1.default[match.entity].rides;
+                let myRides = Object.keys(rideObj).map(function (k) { return rideObj[k].name; });
                 let answer = {
                     park: parks_1.default[match.entity].name,
-                    rides: parks_1.default[match.entity].parks
+                    rides: myRides
                 };
                 session.send(prompts_1.default.listRides, answer);
             }
